@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Input Form</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Form Fields */
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-container input[type="text"]:focus {
+            border-color: #9b59b6;
+        }
+
+        /* Buttons */
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background: #9b59b6;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form-container button:hover {
+            background: #7d3cb5;
+        }
+
+        /* Navigation Link */
+        .form-container .navigate-link {
+            display: block;
+            margin-top: 15px;
+            color: #9b59b6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .form-container .navigate-link:hover {
+            color: #7d3cb5;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add Notice</h2>
+        <form action="/admin/notice/add" method="post">
+            <input type="text" name="notice" placeholder="Enter your Notice" required>
+            <button type="submit">Submit</button>
+            <a href="/admin/dashboard" class="navigate-link">Go to Another Page</a>
+        </form>
+    </div>
+</body>
+</html>

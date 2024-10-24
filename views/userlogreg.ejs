@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            height: 100vh;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        /* Form Container */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+            transition: transform 0.3s;
+            width: 100%;
+            max-width: 400px;
+            display: none; /* Initially hidden */
+        }
+
+        .form-card.active {
+            display: block; /* Show the active form */
+        }
+
+        .form-card h2 {
+            margin-bottom: 15px;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-card input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-card button {
+            width: 100%;
+            padding: 10px;
+            background-color: #71b7e6;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-card button:hover {
+            background-color: #9b59b6;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .toggle-link {
+            margin-top: 20px;
+            color: #333;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome</h1>
+    <div class="form-container">
+        <!-- Login Form -->
+        <div class="form-card active" id="login-form">
+            <h2>Login</h2>
+            <form action="/users/login" method="POST">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <div class="toggle-link" onclick="toggleForms()">Don't have an account? Register here.</div>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="form-card" id="register-form">
+            <h2>Register</h2>
+            <form action="/users/register" method="POST">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
+            <div class="toggle-link" onclick="toggleForms()">Already have an account? Login here.</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForms() {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+
+            // Toggle the active class
+            loginForm.classList.toggle('active');
+            registerForm.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

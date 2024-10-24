@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stored Events</title>
+    <style>
+   /* Basic Reset */
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        /* Container for Event Cards */
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .in{
+            text-decoration: none;
+        }
+
+        /* Event Card */
+        .event-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-in-out;
+            transition: transform 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .event-card .event-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .event-card .event-info h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .event-card .event-info p {
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1 calss="x"> My Events</h1>
+    <br>
+    <div class="events-container">
+        <% myevent.event.forEach(function(event)  { %>
+            <div class="event-card">
+                <img src=" data:image/png;base64, <%= event.eventLogo.toString('base64') %>" alt="<%= event.eventLogo %>">
+                <div class="event-info">
+                    <h3><%= event.name %></h3>
+                    <p>Age Limit: <%= event.teamMemberLimit %></p>
+                    <p>Prize Money: $<%= event.prizeMoney %></p>
+                    <p>Team Size: <%= event.ageLimit %> members</p>
+                    <br>
+                    <a href="/users/delete/myevent/<%= event._id %>"class="in">Delete</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>
+
+  

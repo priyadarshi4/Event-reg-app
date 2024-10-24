@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Loader Container Styling */
+.loader-container {
+    color: white;
+}
+
+/* Loader Animation */
+.loader {
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top: 8px solid white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Loading Text Styling */
+.loader-container p {
+    font-size: 18px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="loader"></div>
+        <p>Loading, please wait...</p>
+    </div>
+    <script>
+        // Set a flag in sessionStorage before redirecting
+        setTimeout(() => {
+            sessionStorage.setItem('fromLoader', 'true'); // Set a flag
+            window.location.href = '/index'; // Replace with your target URL
+        }, 3000); // 3000 milliseconds = 3 seconds
+    </script>
+</body>
+</html>
